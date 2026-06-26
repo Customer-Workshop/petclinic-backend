@@ -58,8 +58,8 @@ class VisitControllerAdditionalTests {
 	void testLoadPetWithVisitPetNotFound() {
 		Owner owner = new Owner();
 		Pet pet = new Pet();
-		pet.setId(1);
 		owner.addPet(pet);
+		pet.setId(1);
 		given(this.owners.findById(1)).willReturn(Optional.of(owner));
 
 		assertThatThrownBy(() -> mockMvc.perform(get("/owners/{ownerId}/pets/{petId}/visits/new", 1, 999)))
